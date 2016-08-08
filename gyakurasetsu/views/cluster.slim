@@ -1,0 +1,23 @@
+h2 クラスタ一覧
+p 誰も解いてないやつだけ出しています。
+table.table
+  thead
+    tr
+      th 代表元
+      th 問題数
+      th 現在の点数
+      th トップになったときの点数
+      th 解くと増える点数
+  tbody
+    - @clusters.each do |cluster|
+      tr
+        td
+          a href="/vis/show/problem/#{cluster.repr}" = cluster.repr
+          | （
+          a href="/gekirin/?problemId=#{cluster.repr}" 折る
+          | ）
+          img src="/rakurui/images/#{cluster.repr}.png"
+        td= cluster.size
+        td= cluster.my_score
+        td= cluster.expected_score
+        td= (cluster.expected_score - cluster.my_score)

@@ -1,0 +1,34 @@
+h2= "Result of #{@name}"
+form action="/gyakurasetsu/executables/bulk_submit/#{@name}/#{@timestamp}" method="POST"
+  p
+    | Submit only id >
+    input type="text" name="threshold" value="0"
+  input type="submit" value="Bulk Submit"
+table.table
+  tr
+    th ProbID
+    th Solution Size
+    th Solution
+    th Solution Visualizer
+    th Resemblance
+    th Submit
+    th stderr
+  - @results.sort_by{|r| r['problem_id']}.each do |result|
+    - bg_class = result['resemblance'] == 1 ? 'bg-success' : result['resemblance'] == 0 ? 'bg-danger' : ''
+    tr class=bg_class
+      td
+        a href="http://tsubasa.osak.jp/vis/show/problem/#{result['problem_id']}" = result['problem_id']
+        br
+        button.btn.btn-primary data-toggle="collapse" data-target="#problem#{result['problem_id']}" Raw
+        pre.collapse id="problem#{result['problem_id']}" = @problems[result['problem_id']]
+      td= result['output'].length
+      td
+        button.btn.btn-primary data-toggle="collapse" data-target="#solution#{result['problem_id']}" Show
+        pre.collapse id="solution#{result['problem_id']}" = result['output']
+      td= "hogehoge"
+      td id="resemblance#{result['problem_id']}" = result['resemblance'] || '-'
+      td
+        button.btn.btn-primary.submit data-executable-name=@name data-timestamp=@timestamp data-problem-id=result['problem_id'] Submit
+      td= result['error']
+
+script src="/gyakurasetsu/submit.js"

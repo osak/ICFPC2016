@@ -1,0 +1,6 @@
+#! /bin/bash
+
+cd /home/icfpc/shared/rasis && /home/icfpc/.pyenv/versions/rasis/bin/python rasis_say.py $@
+
+
+

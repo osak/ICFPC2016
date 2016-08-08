@@ -1,0 +1,15 @@
+.facet-button.selected {
+    background-color: palevioletred;
+}
+
+.skeleton-button.selected {
+    background-color: palegreen;
+}
+
+.skeleton-button.axis {
+    background-color: palevioletred;
+}
+
+.hidden {
+    display: none;
+}

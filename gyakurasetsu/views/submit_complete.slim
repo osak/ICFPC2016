@@ -1,0 +1,12 @@
+h2 Submit completed
+ul
+  li= "Name: #{@name}"
+  li= "Work Directory: #{@workdir}"
+  li= "Compile Command: #{@compile_command}"
+  li= "Run Command: #{@run_command}"
+  li= "Condition: #{@condition}"
+p
+  | Jenkins URL (Few reload may be required):
+  a href=@jenkins_url = @jenkins_url
+
+a href="/gyakurasetsu/executables/list" Back

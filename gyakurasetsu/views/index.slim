@@ -1,0 +1,26 @@
+h2 Current Situation
+p
+  a href='/gyakurasetsu/executables/list' Go to executables list
+table.table#currentSituation
+  thead
+    tr
+      th ProbID
+      th Resemblance
+      th Executable Name
+      th Timestamp
+      th Global Best
+      th Score can be gained
+  tbody
+    - @best_results.values.reject{|r| r['problem_id'].nil?}.sort_by{|r| params[:scoreSort] == '1' ? -(@score_if_i_were_top[r['problem_id']] - @my_score[r['problem_id']]) : r['problem_id']}.each do |result|
+      - global_best = @global_bests[result['problem_id']].to_f
+      - resemblance = result['resemblance'] || 0
+      - bg_class = resemblance == 1 ? 'bg-success' : resemblance == 0 ? 'bg-danger' : resemblance >= global_best ? 'bg-info' : resemblance < global_best ? 'bg-warning' : ''
+      tr class=bg_class
+        td
+          a href="http://2016sv.icfpcontest.org/problem/view/#{result['problem_id']}" = result['problem_id']
+        td= result['resemblance'].to_f
+        td= result['executable_name']
+        td= Time.at(result['timestamp']).localtime('+09:00')
+        td= @global_bests[result['problem_id']].to_f
+        td= (@score_if_i_were_top[result['problem_id']]||0) - (@my_score[result['problem_id']]||0)
+

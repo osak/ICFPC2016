@@ -1,0 +1,18 @@
+h2 Submit program
+form action="/gyakurasetsu/executables/submit" method="POST"
+  .form-group
+    label for="name" Name:
+    input.form-control type="text" id="name" name="name" value="kawatea-convex-without-half-fold" placeholder="このバイナリの名前（ログ用）"
+  .form-group
+    label for="workdir" Work Directory:
+    input.form-control type="text" id="workdir" name="workdir" value="kawatea" placeholder="コンパイルと実行を行うディレクトリ（shared以降を入力）"
+  .form-group
+    label for="compile-command" Compile Command:
+    input.form-control type="text" id="compile-command" name="compile_command" value="g++ -O3 -std=c++11 convex2.cpp -o convex2 && g++ -O3 -std=c++11 shuffle.cpp -o shuffle2" placeholder="コンパイル用のコマンド"
+  .form-group
+    label for="run-command" Run Command:
+    input.form-control type="text" id="run-command" name="run_command" value="./convex2 | ./shuffle2" placeholder="実行用のコマンド"
+  .form-group
+    label for="condition" Condition（新しいやつのみに走らせるならnew, そうでないなら空）:
+    input.form-control type="text" id="condition" name="condition" placeholder="new"
+  input type="submit" value="Submit"

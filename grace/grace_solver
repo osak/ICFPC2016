@@ -1,0 +1,3 @@
+#! /bin/bash
+
+cd /home/icfpc/shared/grace && /home/icfpc/.pyenv/versions/icfpc2016-grace/bin/python grace_solver.py

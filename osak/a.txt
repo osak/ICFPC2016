@@ -1,0 +1,7 @@
+ERROR: -e and -p, and -f are required parameters.
+Usage: submit_solution [options]
+    -e, --executable-name NAME       サブミッションの名前
+    -p, --problem-id PROB_ID         問題ID
+    -f, --solution-file FILE_NAME    解答ファイル
+    -t, --timestamp TIMESTAMP        タイムスタンプ（省略可）
+    -s, --solution-id SOLUTION_ID    解答ID (For internal use)

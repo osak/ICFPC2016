@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bson (4.1.1)
+    bson_ext (1.5.1)
+    cairo (1.15.2)
+      pkg-config (>= 1.1.5)
+    mongo (2.2.7)
+      bson (~> 4.0)
+    pkg-config (1.1.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bson_ext
+  cairo
+  mongo (~> 2.2)
+
+BUNDLED WITH
+   1.12.5

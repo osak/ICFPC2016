@@ -1,0 +1,28 @@
+html
+  head
+    script src="/vis/imodraw.js"
+  body data-vis-src="/vis/js/#{@hash}#{@animate ? '-animated' : ''}.js"
+    h1
+      = @title
+      - if @probid
+        | &nbsp;
+        a href="/gekirin/?problemId=#{@probid}" 折る
+    a href="http://2016sv.icfpcontest.org/problem/list" 問題一覧に戻る
+    br
+    canvas#c width=1000 height=500 style="border:1px solid #000;"
+    p
+      a href="?animate=1" Animate
+    form#form method="GET"
+      input#show-text type="checkbox" name="show_text" value="1"
+      label for="show-text" ラベルを表示
+      br
+      input#force type="checkbox" name="force" value="1"
+      label for="force" 生成しなおす
+      br
+      input type="submit" value="更新"
+    - if @probid
+      div
+        a href="/vis/show/problem/#{@probid-1}" = "<- Problem #{@probid-1}"
+        br
+        a href="/vis/show/problem/#{@probid+1}" = "Problem #{@probid+1} ->"
+    script#s

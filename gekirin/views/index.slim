@@ -1,0 +1,64 @@
+html
+  head
+    script src="https://code.jquery.com/jquery-3.1.0.min.js"
+    script src="/gekirin/js/draw.js"
+    link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    link rel="stylesheet" href="/gekirin/css/style.css"
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  body.container
+    .row
+      .col-lg-8
+        canvas#canvas width=700 height=500 style="border:1px solid #000;"
+        .form-group
+          input#problem-id.form-control type="text" placeholder="Problem ID"
+          button#start.btn.btn-primary ゲームを始める
+          button.btn.btn-default.zoom-button data-zoom-level=10 拡大
+          button.btn.btn-default.zoom-button data-zoom-level=-10 縮小
+        .form-inline
+          input#show-label.form-control type="checkbox" checked="checked"
+          label for="show-label" ラベルを表示
+        .form-group
+          h2 ふっかつのじゅもん
+          button#restore.btn.btn-warning つづきから はじめる
+          button#undo.btn.btn-danger しんでしまうとは なさけない！
+          br
+          textarea#history rows=10 cols=40
+          textarea#undo-history rows=10 cols=40
+      .col-lg-4
+        h1 天ノ逆鱗
+        div#information.alert.alert-info style="margin-bottom: 3em"
+        .row
+          .col-lg-6
+            button#select-all-facet.btn.btn-success 全選択
+            .btn-group
+              button#select-even.btn.btn-info 偶数のみ
+              button#select-odd.btn.btn-info 奇数のみ
+              #facet-list.btn-group
+          .col-lg-6
+            .form-inline
+              .form-group
+                input#direct-segment.form-control type="checkbox"
+                label for="direct-segment" 直接入力
+              #direct-segment-form.panel.panel-default
+                input#start-coord.form-control type="input" placeholder="始点"
+                | →
+                input#end-coord.form-control type="input" placeholder="終点"
+                br
+                button#direct-segment-draw 試し描き
+            #skeleton-list.btn-group
+            .radio
+              p 折る向き（矢印に対して）
+              label
+                input type="radio" name="direction" value="1" checked="checked" 左
+              label
+                input type="radio" name="direction" value="-1" 右
+        button#send.btn.btn-primary.submit-button 折る
+        button#finish.btn.btn-danger.submit-button 完成！
+        br
+        #solution-panel.panel.panel-default
+          .panel-heading Solution （コピペしてね）
+          .panel-body
+            button#submit.btn.btn-primary 即提出
+            #size-indicator
+            br
+            textarea#solution rows=10

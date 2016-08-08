@@ -1,0 +1,9 @@
+h2 List of executables
+a href="/gyakurasetsu/executables/submit" Submit New Executable
+ul
+  - @executables.each do |e|
+    li= e.name
+    ul
+      - e.timestamps.each do |timestamp|
+        li
+          a href="/gyakurasetsu/executables/show/#{e.name}/#{timestamp}" =Time.at(timestamp.to_i).localtime('+09:00')
